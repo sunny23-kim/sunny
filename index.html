@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>20250712-AI-김준오따라하기</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 분석 실습 수업 지도안</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="#session1" class="nav-link">1차시: 데이터 이해와 정제</a>
+            <a href="#session2" class="nav-link">2차시: 데이터 탐색 및 기술 통계</a>
+            <a href="#session3" class="nav-link">3차시: 데이터 시각화 및 결과 도출</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="main-title">📊 데이터 분석 실습 수업 지도안 (2학년)</h1>
+        <p class="intro-text">
+            안녕하세요, 학생 여러분! 데이터 분석은 4차 산업혁명 시대의 핵심 역량 중 하나입니다.
+            이번 3차시 데이터 분석 실습 수업을 통해 데이터를 이해하고, 분석하며, 시각화하는 방법을 함께 익혀봅시다.
+            실제 데이터를 다루면서 여러분의 문제 해결 능력과 논리적 사고력을 향상시킬 수 있을 거예요!
+        </p>
+
+        <section id="session1" class="session-section">
+            <h2 class="session-title">1차시: 데이터의 이해와 정제 (50분)</h2>
+            <div class="session-content">
+                <h3 class="sub-title">학습 목표</h3>
+                <ul>
+                    <li><strong>데이터의 중요성</strong>과 <strong>데이터 분석의 필요성</strong>을 이해한다.</li>
+                    <li>다양한 <strong>데이터 유형</strong>을 구분하고 설명할 수 있다.</li>
+                    <li><strong>데이터 정제</strong>의 개념과 필요성을 이해하고, 간단한 <strong>결측치 및 이상치 처리</strong> 방법을 익힌다.</li>
+                </ul>
+
+                <h3 class="sub-title">준비물</h3>
+                <ul>
+                    <li>개인별 노트북 또는 태블릿</li>
+                    <li>(선택) 구글 코랩(Google Colab) 접속 환경 또는 파이썬 설치 환경</li>
+                    <li>예시 데이터셋 (CSV 파일 형태, 예: 간단한 성적 데이터, 날씨 데이터 등)</li>
+                </ul>
+
+                <h3 class="sub-title">도입 (10분)</h3>
+                <ul>
+                    <li><strong>데이터 분석의 중요성 및 활용 사례 소개</strong>:
+                        <ul>
+                            <li>넷플릭스 영화 추천, 유튜브 맞춤 영상, 자율주행 자동차 등 실생활 속 데이터 분석 사례를 통해 흥미 유발.</li>
+                            <li>"데이터는 21세기의 원유"라는 비유를 통해 데이터의 가치 강조.</li>
+                        </ul>
+                    </li>
+                    <li><strong>수업 목표 및 내용 안내</strong>:
+                        <ul>
+                            <li>이번 3차시 수업을 통해 무엇을 배우고 어떤 결과물을 만들게 될지 설명.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3 class="sub-title">전개 (35분)</h3>
+                <ol>
+                    <li><strong>데이터란 무엇인가? (10분)</strong>
+                        <ul>
+                            <li><strong>정의</strong>: 현실 세계의 사실, 현상, 개념 등을 측정하거나 기록하여 얻은 값.</li>
+                            <li><strong>데이터의 종류</strong>:
+                                <ul>
+                                    <li><strong>정량적 데이터</strong>: 수치로 표현되는 데이터 (예: 키, 몸무게, 시험 점수).
+                                        <ul>
+                                            <li>이산 데이터 (셀 수 있는 정수, 예: 학생 수)</li>
+                                            <li>연속 데이터 (측정 가능한 실수, 예: 온도)</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>정성적 데이터</strong>: 범주나 설명으로 표현되는 데이터 (예: 성별, 혈액형, 선호하는 색깔).
+                                        <ul>
+                                            <li>명목형 (순서가 없는 범주, 예: 지역)</li>
+                                            <li>순서형 (순서가 있는 범주, 예: 등급)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>활동</strong>: 제시된 데이터 샘플을 보고 정량/정성, 이산/연속, 명목/순서형으로 분류해보기.</li>
+                        </ul>
+                    </li>
+                    <li><strong>데이터 정제 (25분)</strong>
+                        <ul>
+                            <li><strong>데이터 정제의 필요성</strong>: "Garbage In, Garbage Out" 원칙 설명 (잘못된 데이터는 잘못된 분석 결과로 이어짐).</li>
+                            <li><strong>결측치(Missing Value) 처리</strong>:
+                                <ul>
+                                    <li>결측치 정의 및 발생 원인 설명.</li>
+                                    <li>결측치 확인 방법 (간단한 코드 또는 엑셀 함수)</li>
+                                    <li>처리 방법: 제거, 평균/중앙값/최빈값으로 대체, 예측 모델 사용 등 (간단한 개념 설명).</li>
+                                </ul>
+                            </li>
+                            <li><strong>이상치(Outlier) 처리</strong>:
+                                <ul>
+                                    <li>이상치 정의 및 발생 원인 설명.</li>
+                                    <li>이상치 확인 방법 (시각화 자료 활용 - 박스 플롯 등 간단히 소개).</li>
+                                    <li>처리 방법: 제거, 다른 값으로 대체 등 (간단한 개념 설명).</li>
+                                </ul>
+                            </li>
+                            <li><strong>실습</strong>: 제공된 예시 데이터셋(CSV)을 사용하여 결측치/이상치 찾아보고 간단히 처리하는 실습 (엑셀 또는 코랩에서 Pandas 라이브러리 활용 - `isnull()`, `dropna()`, `fillna()` 등).</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3 class="sub-title">정리 및 차시 예고 (5분)</h3>
+                <ul>
+                    <li>오늘 학습 내용 요약 및 질문 시간.</li>
+                    <li>2차시에는 <strong>데이터 분석 방법</strong>과 <strong>기술 통계</strong>에 대해 배울 것임을 예고.</li>
+                    <li><strong>과제</strong>: 개인별로 흥미 있는 주제의 간단한 데이터셋을 찾아보고, 어떤 종류의 데이터가 있는지 분석해보기.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="session2" class="session-section">
+            <h2 class="session-title">2차시: 데이터 탐색 및 기술 통계 (50분)</h2>
+            <div class="session-content">
+                <h3 class="sub-title">학습 목표</h3>
+                <ul>
+                    <li><strong>데이터를 탐색</strong>하는 다양한 방법을 이해하고 적용할 수 있다.</li>
+                    <li><strong>기술 통계량</strong>의 의미를 이해하고 계산할 수 있다.</li>
+                    <li>데이터의 <strong>분포와 경향성</strong>을 파악할 수 있다.</li>
+                </ul>
+
+                <h3 class="sub-title">준비물</h3>
+                <ul>
+                    <li>개인별 노트북 또는 태블릿</li>
+                    <li>(선택) 구글 코랩(Google Colab) 접속 환경 또는 파이썬 설치 환경</li>
+                    <li>1차시에서 사용한 예시 데이터셋 또는 새로운 데이터셋</li>
+                </ul>
+
+                <h3 class="sub-title">도입 (5분)</h3>
+                <ul>
+                    <li>지난 시간 복습: 데이터의 종류, 데이터 정제의 중요성.</li>
+                    <li>데이터 탐색의 중요성 강조: "데이터를 읽는 눈"을 기르는 과정.</li>
+                </ul>
+
+                <h3 class="sub-title">전개 (40분)</h3>
+                <ol>
+                    <li><strong>데이터 탐색 (20분)</strong>
+                        <ul>
+                            <li><strong>데이터 시트 훑어보기</strong>: 전체 데이터의 구조, 컬럼명, 몇 가지 행 확인.</li>
+                            <li><strong>기본 정보 확인</strong>:
+                                <ul>
+                                    <li>데이터의 크기 (행, 열의 개수)</li>
+                                    <li>각 컬럼의 데이터 타입 (숫자, 문자열 등)</li>
+                                    <li>결측치 여부 재확인</li>
+                                </ul>
+                            </li>
+                            <li><strong>기술 통계량 계산 및 해석</strong>:
+                                <ul>
+                                    <li>`describe()` 함수 (파이썬 Pandas) 또는 엑셀의 통계 기능 활용.</li>
+                                    <li><strong>중심 경향성</strong>:
+                                        <ul>
+                                            <li><strong>평균(Mean)</strong>: 데이터의 총합을 개수로 나눈 값.</li>
+                                            <li><strong>중앙값(Median)</strong>: 데이터를 크기 순으로 나열했을 때 가장 가운데 있는 값 (이상치에 강함).</li>
+                                            <li><strong>최빈값(Mode)</strong>: 가장 자주 나타나는 값 (범주형 데이터에 유용).</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>산포도</strong>:
+                                        <ul>
+                                            <li><strong>분산(Variance)</strong>: 데이터가 평균으로부터 얼마나 떨어져 있는지 나타내는 지표.</li>
+                                            <li><strong>표준편차(Standard Deviation)</strong>: 분산의 양의 제곱근, 데이터의 흩어진 정도를 직관적으로 파악.</li>
+                                            <li><strong>범위(Range)</strong>: 최대값 - 최소값.</li>
+                                            <li><strong>사분위수(Quartiles)</strong>: 데이터를 4등분하는 값 (Q1, Q2, Q3) 및 IQR(사분위 범위).</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>실습</strong>: 제공된 데이터셋을 이용하여 각 컬럼별로 기술 통계량 계산하고 해석해보기. (예: 학생 성적 데이터의 평균, 중앙값, 표준편차 계산 및 의미 파악)</li>
+                        </ul>
+                    </li>
+                    <li><strong>데이터 간 관계 탐색 (20분)</strong>
+                        <ul>
+                            <li><strong>상관관계(Correlation)</strong>: 두 변수 간의 선형적 관계의 강도와 방향.
+                                <ul>
+                                    <li>양의 상관관계, 음의 상관관계, 상관없음 설명.</li>
+                                    <li>상관 계수(Correlation Coefficient)의 의미 (1에 가까울수록 강한 양의 상관관계, -1에 가까울수록 강한 음의 상관관계, 0에 가까울수록 상관관계 없음).</li>
+                                </ul>
+                            </li>
+                            <li><strong>그룹별 분석</strong>: 특정 범주(예: 성별, 학년)에 따른 다른 변수(예: 성적)의 변화 분석. (예: 남자와 여자의 평균 성적 비교)</li>
+                            <li><strong>실습</strong>:
+                                <ul>
+                                    <li>데이터셋 내 두 변수 간의 상관계수 계산 및 해석.</li>
+                                    <li>특정 그룹별로 기술 통계량 계산하여 비교 분석.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3 class="sub-title">정리 및 차시 예고 (5분)</h3>
+                <ul>
+                    <li>오늘 학습 내용 요약 및 질문 시간.</li>
+                    <li>3차시에는 <strong>데이터 시각화</strong>를 통해 분석 결과를 효과적으로 전달하는 방법을 배울 것임을 예고.</li>
+                    <li><strong>과제</strong>: 분석한 데이터셋에서 의미 있는 인사이트를 도출하고, 이를 다음 시간 시각화 아이디어로 연결해보기.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="session3" class="session-section">
+            <h2 class="session-title">3차시: 데이터 시각화 및 결과 도출 (50분)</h2>
+            <div class="session-content">
+                <h3 class="sub-title">학습 목표</h3>
+                <ul>
+                    <li>다양한 <strong>데이터 시각화 차트</strong>의 종류와 용도를 이해한다.</li>
+                    <li>적절한 <strong>시각화 도구</strong>를 활용하여 데이터를 효과적으로 표현할 수 있다.</li>
+                    <li>시각화된 데이터를 바탕으로 <strong>결론을 도출</strong>하고 <strong>의미 있는 인사이트</strong>를 제시할 수 있다.</li>
+                </ul>
+
+                <h3 class="sub-title">준비물</h3>
+                <ul>
+                    <li>개인별 노트북 또는 태블릿</li>
+                    <li>(선택) 구글 코랩(Google Colab) 접속 환경 또는 파이썬 설치 환경 (Matplotlib, Seaborn 라이브러리 활용)</li>
+                    <li>지난 차시에서 분석한 데이터셋 및 도출된 인사이트 아이디어</li>
+                </ul>
+
+                <h3 class="sub-title">도입 (5분)</h3>
+                <ul>
+                    <li>지난 시간 복습: 데이터 탐색 및 기술 통계.</li>
+                    <li>데이터 시각화의 중요성 강조: "백문이 불여일견", 시각화를 통해 데이터를 더 쉽고 빠르게 이해.</li>
+                </ul>
+
+                <h3 class="sub-title">전개 (40분)</h3>
+                <ol>
+                    <li><strong>데이터 시각화의 종류 및 용도 (15분)</strong>
+                        <ul>
+                            <li><strong>막대 그래프(Bar Chart)</strong>: 범주형 데이터의 빈도나 값을 비교할 때 사용 (예: 학생 학급별 인원).</li>
+                            <li><strong>선 그래프(Line Chart)</strong>: 시간의 흐름에 따른 데이터 변화를 나타낼 때 사용 (예: 연도별 평균 기온 변화).</li>
+                            <li><strong>파이 차트(Pie Chart)</strong>: 전체에 대한 각 부분의 비율을 나타낼 때 사용 (예: 혈액형별 학생 비율).</li>
+                            <li><strong>산점도(Scatter Plot)</strong>: 두 연속형 변수 간의 관계(상관관계)를 파악할 때 사용 (예: 공부 시간과 성적).</li>
+                            <li><strong>히스토그램(Histogram)</strong>: 연속형 데이터의 분포를 나타낼 때 사용 (예: 학생들의 시험 점수 분포).</li>
+                            <li>(선택) 박스 플롯(Box Plot): 데이터의 분포, 중앙값, 사분위수, 이상치 등을 한눈에 파악.</li>
+                            <li><strong>활동</strong>: 다양한 시각화 차트 예시를 보고 어떤 경우에 사용하면 좋을지 토론.</li>
+                        </ul>
+                    </li>
+                    <li><strong>데이터 시각화 실습 (25분)</strong>
+                        <ul>
+                            <li><strong>시각화 도구 소개</strong>: 엑셀의 차트 기능 또는 파이썬 Matplotlib/Seaborn 라이브러리.</li>
+                            <li><strong>실습</strong>:
+                                <ul>
+                                    <li>지난 차시에서 분석한 데이터셋을 바탕으로 학생들이 직접 차트를 생성.</li>
+                                    <li><strong>지시사항</strong>:
+                                        <ul>
+                                            <li>범주형 데이터의 분포를 나타내는 막대 그래프 또는 파이 차트 생성.</li>
+                                            <li>두 연속형 변수 간의 관계를 보여주는 산점도 생성.</li>
+                                            <li>연속형 데이터의 분포를 보여주는 히스토그램 생성.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>팁</strong>: 차트의 제목, 축 레이블, 범례 등 추가하여 가독성 높이기. 색상, 스타일 등 적절히 활용.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3 class="sub-title">정리 및 결과 발표 (5분)</h3>
+                <ul>
+                    <li><strong>발표 및 공유</strong>: 각자 만든 시각화 차트를 발표하고, 이를 통해 어떤 인사이트를 얻었는지 공유.</li>
+                    <li><strong>피드백</strong>: 학생들의 발표에 대한 피드백 및 잘된 점, 개선할 점 논의.</li>
+                    <li><strong>수업 마무리</strong>: 3차시 데이터 분석 실습 수업을 통해 배운 내용을 다시 한번 강조하고, 앞으로 데이터 분석 능력을 어떻게 활용할 수 있을지 격려.</li>
+                    <li>"데이터는 단순히 숫자가 아니라, 그 안에 숨겨진 이야기를 찾아내는 보물 지도와 같습니다. 여러분이 오늘 배운 것을 바탕으로 더 많은 이야기를 발견하길 바랍니다!"</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
